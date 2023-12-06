@@ -151,23 +151,24 @@ const AnchorMenu = (props: AnchorMenuProps): JSX.Element => {
             <div className="questionnaire-overview">
                 <div className="questionnaire-overview__toolbox">
                     <strong>{t('Components')}</strong>
-                    {createTypeComponent(IQuestionnaireItemType.group, t('Group'))}
+                    {/* {createTypeComponent(IQuestionnaireItemType.group, t('Group'))} */}
                     {createTypeComponent(IQuestionnaireItemType.string, t('Text answer'))}
-                    {createTypeComponent(IQuestionnaireItemType.display, t('Information text'))}
-                    {createTypeComponent(IQuestionnaireItemType.attachment, t('Attachment'))}
-                    {createTypeComponent(IQuestionnaireItemType.receiver, t('Recipient list'))}
-                    {createTypeComponent(IQuestionnaireItemType.receiverComponent, t('Recipient component'))}
-                    {createTypeComponent(IQuestionnaireItemType.boolean, t('Confirmation'))}
+                    {/* {createTypeComponent(IQuestionnaireItemType.display, t('Information text'))} */}
+                    {/* {createTypeComponent(IQuestionnaireItemType.attachment, t('Attachment'))} */}
+                    {/* {createTypeComponent(IQuestionnaireItemType.receiver, t('Recipient list'))} */}
+                    {/* {createTypeComponent(IQuestionnaireItemType.receiverComponent, t('Recipient component'))} */}
+                    {/* {createTypeComponent(IQuestionnaireItemType.boolean, t('Confirmation'))} */}
                     {createTypeComponent(IQuestionnaireItemType.choice, t('Choice'))}
                     {createTypeComponent(IQuestionnaireItemType.date, t('Date'))}
-                    {createTypeComponent(IQuestionnaireItemType.time, t('Time'))}
+                    {/* {createTypeComponent(IQuestionnaireItemType.time, t('Time'))} */}
                     {createTypeComponent(IQuestionnaireItemType.integer, t('Number'))}
-                    {createTypeComponent(IQuestionnaireItemType.quantity, t('Quantity'))}
+                    {/* {createTypeComponent(IQuestionnaireItemType.quantity, t('Quantity'))} */}
                 </div>
                 <SortableTree
                     className="questionnaire-overview__treeview"
                     dndType={externalNodeType}
                     treeData={orderTreeData}
+                    maxDepth={0}
                     onChange={() => {
                         /* dummy */
                     }}
@@ -204,10 +205,11 @@ const AnchorMenu = (props: AnchorMenuProps): JSX.Element => {
                         }
                         setCollapsedNodes(filteredNodes);
                     }}
-                    canNodeHaveChildren={(node: Node): boolean => {
-                        const item = props.qItems[node.title];
-                        return item ? canTypeHaveChildren(item) : false;
-                    }}
+                    // canNodeHaveChildren={(node: Node): boolean => {
+                    //     const item = props.qItems[node.title];
+                    //     return item ? canTypeHaveChildren(item) : false;
+                    // }}
+                    canNodeHaveChildren={() => false}
                     generateNodeProps={(extendedNode: ExtendedNode) => ({
                         className: `anchor-menu__item 
                             ${hasValidationError(extendedNode.node.title) ? 'validation-error' : ''} 
